@@ -2,6 +2,7 @@ var $slider = $("#slider");
 var $fill = $(".bar .fill");
 var $views = $("#views");
 var $price = $("#price");
+var $pricemobile = $("#price-mobile");
 var $toggle = $("#toggle");
 
 $slider.on("input", setBar);
@@ -44,7 +45,9 @@ function setPagePriceMonth() {
 
     if ($toggle.is(':checked')) {
         $price.html(`$${(price - (price * 25) / 100).toFixed(2)}`);
+        $pricemobile.html(`$${(price - (price * 25) / 100).toFixed(2)}`);
     } else {
         $price.html(`$${price}.00`);
+        $pricemobile.html(`$${price}.00`);
     }
 }

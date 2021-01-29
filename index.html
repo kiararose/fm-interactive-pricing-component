@@ -22,18 +22,21 @@
         <main>
             <div class="views-price">
                 <p class="views"><span id="views"></span>Pageviews</p>
-                <p class="price"><span id="price"></span> /month</p>
+                <p class="price"><span id="price"></span> / month</p>
             </div>
             <div class="range-slider">
                 <span class="bar"><span class="fill"></span></span>
                 <input class="slider" id="slider" type="range" min="10" max="110" step="25" value="10">
             </div>
-            <div class="toggle-price">
-                <span>Monthly Billing</span>
-                <input id="toggle" type="checkbox">
-                <span>Yearly Billing  25% discount</span>
+            <div class="views-price-mobile">
+                <p class="price"><span id="price-mobile"></span> / month</p>
             </div>
-            <div>
+            <div class="toggle-price">
+                <span class="monthly">Monthly Billing</span>
+                <input id="toggle" type="checkbox">
+                <span class="yearly">Yearly Billing <span class="discount">-25%</span></span>
+            </div>  
+            <div class="package">
                 <ul>
                     <li>Unlimited websites</li>
                     <li>100% data ownership</li>

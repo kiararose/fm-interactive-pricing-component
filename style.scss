@@ -5,7 +5,7 @@ $light-red: hsl(15, 100%, 70%);
 $pale-blue: hsl(226, 100%, 87%);
 
 $white: hsl (0, 0%, 100%);
-$very-pale-blule: hsl(230, 100%, 99%);
+$very-pale-blue: hsl(230, 100%, 99%);
 $light-grayish-blue-slider: hsl(224, 65%, 95%);
 $light-grayish-blue-toggle: hsl(223, 50%, 87%);
 $grayish-blue: hsl(225, 20%, 60%);
@@ -21,7 +21,7 @@ $primary-font: 'Manrope', sans-serif;
     a { 
         text-decoration: none;
         font-weight: bold;
-        color: $grayish-blue;
+        color: $dark-desaturated-blue;
     }
 
     a:hover {
@@ -31,37 +31,119 @@ $primary-font: 'Manrope', sans-serif;
 
 body {
     font-family: $primary-font;
-    margin: 0;
+    background-color: $very-pale-blue;
 }
 
 .container {
-    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
 
     header {
-        
+        text-align: center;
+        background: url("images/pattern-circles.svg") no-repeat;
+        padding: 50px 0;
+        background-position: center;
 
         h1 {
             font-weight: 800;
+            font-size: 20px;
+            color: $dark-desaturated-blue;
+
+            @media (min-width:1024px) {
+                font-size: 30px;
+            }
+        }
+
+        p {
+            font-weight: 600;
+            font-size: 15px;
+            color: $grayish-blue;
+            max-width: 200px;
+            width: 100%;
+            margin: auto;
+
+            @media (min-width:1024px) {
+                max-width: unset;
+            }
         }
     }
 
     main {
+        background: white;
+        border-radius: 15px;
+        width: 100%;
+        
+        @media (min-width:768px) {
+            width: 600px;
+        }
+
         .views-price {
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
+            justify-content: center;
+            padding: 50px 0 30px;
+            height: 100%;
+
+            @media (min-width: 768px) {
+                justify-content: space-between;
+                align-items: center;
+                padding: 50px 50px 30px;
+            }
 
             .views {
-
+                color: $grayish-blue;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                margin: 0;
             }
 
             .price {
+                display: none;
 
+                @media (min-width:768px) {
+                    display: flex;
+                    align-items: center;
+                    color: $grayish-blue;
+                }
+            }
+
+            .price > span {
+                font-weight: 800;
+                font-size: 32px;
+                margin: 0 5px 0 0;
+                color: $dark-desaturated-blue;
+            }
+        }
+
+        .views-price-mobile {
+            display: flex;
+            justify-content: center;
+
+            .price {
+                display: flex;
+                align-items: center;
+                color: $grayish-blue;
+                padding: 30px 0 0;
+                margin: 0;
+
+                @media (min-width: 768px) {
+                    display: none;
+                }
+            }
+
+            .price > span {
+                font-weight: 800;
+                font-size: 32px;
+                margin: 0 5px 0 0;
+                color: $dark-desaturated-blue;
             }
         }
 
         .range-slider {
             position: relative;
+            margin: 0 20px;
 
             .bar {
                 position: absolute;
@@ -99,35 +181,47 @@ body {
                 width: 40px;
                 height: 40px;
                 border-radius: 50%;
-                background: hsl(174, 86%, 45%);
+                background: url("images/icon-slider.svg") no-repeat center, $soft-cyan;
                 cursor: pointer;
-              }
+            }
+
+            .slider::-webkit-slider-thumb:active {
+                background-color: $strong-cyan;
+            }
         }
 
         .toggle-price {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 0;
+            border-bottom: 1px solid $light-grayish-blue-slider;
+
             input[type="checkbox"] {
                 position: relative;
-                width: 80px;
-                height: 40px;
+                width: 40px;
+                height: 22px;
                 -webkit-appearance: none;
                 background: #c6c6c6;
                 outline: none;
                 border-radius: 20px;
-                box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+                margin: 0;
+                //box-shadow: inset 0 0 5px rgba(0,0,0,.2);
             } 
 
             input:checked[type="checkbox"] {
-                background: blue;
+                background: $soft-cyan;
             }
           
             input[type="checkbox"]:before {
                 position: absolute;
                 content: '';
-                width: 30px;
-                height: 30px;
+                width: 14px;
+                height: 14px;
                 border-radius: 20px;
-                top: 5px;
-                left: 5px;
+                top: 4px;
+                left: 4px;
                 background: white;
                 transition: .5s;
                 //transform: scale(1.1);
@@ -136,7 +230,96 @@ body {
             }
           
             input:checked[type="checkbox"]:before {
-                left: 45px;
+                left: 22px;
+            }
+
+            .monthly, .yearly {
+                color: $grayish-blue;
+                font-size: 11px;
+
+                @media (min-width:375px) {
+                    font-size: 14px;
+                }
+            }
+
+            .monthly {
+                margin: 0 5px 0 0;
+            }
+
+            .yearly {
+                margin: 0 0 0 5px;
+            }
+
+            .yearly > .discount {
+                background-color: $light-grayish-red;
+                color: $light-red;
+                border-radius: 15px;
+                font-weight: 800;
+                font-size: 12px;
+                padding: 2px 7px;
+            }
+        }
+
+        .package {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 0 40px 0;
+
+            @media (min-width:768px) {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 0 50px 40px 50px;
+            }
+
+            ul {
+                list-style-type: none;
+                text-align: center;
+                padding: 0;
+                margin: 30px 0;
+
+                @media (min-width:768px) {
+                    text-align: left;
+                }
+                
+                li {
+                    position: relative;
+                    color: $grayish-blue;
+                    width: fit-content;
+                    margin: 0 auto 10px;
+
+                    @media (min-width:768px) {
+                        margin: 0;
+                    }
+                }
+
+                li:before {
+                    position: absolute;
+                    content: "";
+                    top: 7px;
+                    left: -22px;
+                    width: 9px;
+                    height: 8px;
+                    background: url("images/icon-check.svg") no-repeat center;
+                }
+            }
+
+            button {
+                background-color: $dark-desaturated-blue;
+                color: $pale-blue;
+                border: none;
+                border-radius: 40px;
+                padding: 15px 50px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-family: $primary-font;
+                cursor: pointer;
+                outline: none;
+            }
+
+            button:hover {
+                color: white;
             }
         }
     }
